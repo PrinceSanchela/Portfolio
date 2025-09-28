@@ -22,9 +22,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com/princesanchela", label: "GitHub" },
-    { icon: Linkedin, href: "https://linkedin.com/in/princesanchela", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:prince.sanchela@example.com", label: "Email" }
+    { icon: Github, href: "https://github.com/PrinceSanchela", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/prince-sanchela/", label: "LinkedIn" },
+    { icon: Mail, href: "mailto:princesanchela@gmail.com", label: "Email" }
   ];
 
   return (
@@ -80,8 +80,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h4 className="font-semibold">Get In Touch</h4>
             <div className="space-y-2 text-muted-foreground">
-              <p>📧 prince.sanchela@example.com</p>
-              <p>📱 +91 XXXXX XXXXX</p>
+              <p>📧 princesanchela@gmail.com</p>
+              <p>📱 +91 94288 33210</p>
               <p>📍 India</p>
             </div>
             <Button 
@@ -100,7 +100,7 @@ const Footer = () => {
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-muted-foreground text-sm flex items-center">
-            Made with <Heart className="mx-1 text-red-500" size={16} /> by Prince Sanchela
+            Made by Prince Sanchela
           </div>
           
           <div className="text-muted-foreground text-sm">

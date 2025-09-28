@@ -48,14 +48,14 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "prince.sanchela@example.com",
-      href: "mailto:prince.sanchela@example.com"
+      value: "princesanchela@gmail.com",
+      href: "mailto:princesanchela@gmail.com"
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+91 XXXXX XXXXX",
-      href: "tel:+91XXXXXXXXXXX"
+      value: "+91 94288 33210",
+      href: "tel:+919428833210"
     },
     {
       icon: MapPin,
@@ -69,13 +69,13 @@ const Contact = () => {
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com/princesanchela",
+      href: "https://github.com/PrinceSanchela",
       color: "hover:text-white"
     },
     {
       icon: Linkedin,
       label: "LinkedIn", 
-      href: "https://linkedin.com/in/princesanchela",
+      href: "www.linkedin.com/in/prince-sanchela",
       color: "hover:text-blue-500"
     },
     {
