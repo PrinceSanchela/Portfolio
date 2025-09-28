@@ -52,7 +52,7 @@ const Navigation = () => {
               onClick={() => scrollToSection("home")}
               className="text-xl font-bold font-mono text-primary hover:text-primary-glow transition-colors"
             >
-              Prince Sanchela
+              Prince
             </button>
           </div>
 
