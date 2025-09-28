@@ -75,7 +75,7 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: "LinkedIn", 
-      href: "www.linkedin.com/in/prince-sanchela",
+      href: "https://www.linkedin.com/in/prince-sanchela",
       color: "hover:text-blue-500"
     },
     {
