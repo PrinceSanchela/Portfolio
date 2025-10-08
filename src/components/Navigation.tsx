@@ -52,7 +52,7 @@ const Navigation = () => {
               onClick={() => scrollToSection("home")}
               className="text-xl font-bold font-mono text-primary hover:text-primary-glow transition-colors"
             >
-            <img src="src\assets\Prince_programmer_logo.png" alt="prince_logo" sizes="10px" />
+              <img src="src\assets\Prince_programmer_logo.png" alt="prince_logo" style={{ height: '7vh'}} />
             </button>
           </div>
 
