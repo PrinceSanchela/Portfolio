@@ -45,14 +45,14 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-12">
           {/* Logo */}
           <div className="flex-shrink-0">
             <button 
               onClick={() => scrollToSection("home")}
               className="text-xl font-bold font-mono text-primary hover:text-primary-glow transition-colors"
             >
-              <img src="src\assets\Prince_programmer_logo.png" alt="prince_logo" style={{ height: '7vh'}} />
+              <img className="h-10"src="src\assets\Prince_programmer_logo.png" alt="prince_logo"/>
             </button>
           </div>
 
