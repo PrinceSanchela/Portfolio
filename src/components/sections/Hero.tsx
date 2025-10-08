@@ -31,14 +31,14 @@ const Hero = () => {
         <HeroR />
         {/* Profile Photo */}
         <div className="animate fade-in-20">
-          <img src="src\assets\WhatsApp Image 2025-10-08 (1).png" alt="profile photo" />
+          <img src="src\assets\Profile_Desktop_img.png" alt="profile photo" />
         </div>
       </div>
       {/* Mobile Interface */}
       <div className=" relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:hidden" >
         {/* Profile Photo */}
         <div className="animate fade-in-20">
-          <img src="src\assets\WhatsApp Image 2025-10-08 at 12.54.23 PM.png" alt="profile photo" style={{ margin: "1rem" }} />
+          <img src="src\assets\Profile_Mobile_img.png" alt="profile photo" style={{ margin: "1rem" }} />
         </div>
         <HeroR />
       </div>
