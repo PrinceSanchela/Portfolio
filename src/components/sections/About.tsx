@@ -11,7 +11,7 @@ const About = () => {
     },
     {
       icon: Server,
-      title: "Backend Development", 
+      title: "Backend Development",
       description: "Python, Node.js, RESTful APIs, and microservices architecture"
     },
     {
@@ -47,8 +47,8 @@ const About = () => {
             Building the <span className="text-primary">Future</span> of Web
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I&apos;m a passionate full stack developer with expertise in modern web technologies. 
-            I love creating efficient, scalable solutions that solve real-world problems and 
+            I&apos;m a passionate full stack developer with expertise in modern web technologies.
+            I love creating efficient, scalable solutions that solve real-world problems and
             deliver exceptional user experiences.
           </p>
         </div>
@@ -58,18 +58,18 @@ const About = () => {
             <h3 className="text-2xl font-bold mb-6">My Journey</h3>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                With several years of experience in full stack development, I&apos;ve had the 
-                opportunity to work on diverse projects ranging from small business websites 
+                With several years of experience in full stack development, I&apos;ve had the
+                opportunity to work on diverse projects ranging from small business websites
                 to large-scale enterprise applications.
               </p>
               <p>
-                My expertise spans across the entire development stack, from crafting intuitive 
-                user interfaces with React to building robust backend systems with Python and 
+                My expertise spans across the entire development stack, from crafting intuitive
+                user interfaces with React to building robust backend systems with Python and
                 managing databases with MongoDB.
               </p>
               <p>
-                I&apos;m always eager to learn new technologies and stay updated with the latest 
-                industry trends. When I&apos;m not coding, you can find me contributing to open 
+                I&apos;m always eager to learn new technologies and stay updated with the latest
+                industry trends. When I&apos;m not coding, you can find me contributing to open
                 source projects or writing technical articles.
               </p>
             </div>
@@ -106,7 +106,7 @@ const About = () => {
           {highlights.map((highlight, index) => {
             const Icon = highlight.icon;
             return (
-              <Card 
+              <Card
                 key={index}
                 className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 group"
               >

@@ -30,8 +30,8 @@ const Hero = () => {
       <div className=" relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center hidden md:flex" >
         <HeroR />
         {/* Profile Photo */}
-        <div className="animate fade-in-20">
-          <img src="src\assets\Profile_Desktop_img.png" alt="profile photo" />
+        <div className="relative animate fade-in-20 animate-fade-in transition-opacity delay-300 duration-600 ease-in-out hover:-translate-y-1 hover:scale-110">
+          <img src="src\assets\Profile_Desktop_img.png" alt="profile photo" style={{ height: "27rem", width: "19rem", paddingBottom: "4rem" }} />
         </div>
       </div>
       {/* Mobile Interface */}

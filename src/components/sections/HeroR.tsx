@@ -11,9 +11,9 @@ const HeroR = () => {
   return (
     <div className=" relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" >
       {/* Content */}
-      <div className="animate-fade-up">
+      <div className="animate-fade-up pt-[2rem]">
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 ...">
           Prince Sanchela
         </h1>
 
