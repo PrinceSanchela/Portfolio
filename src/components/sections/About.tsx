@@ -1,8 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Code, Server, Database, Cloud, Zap, Users } from "lucide-react";
-
+import { useInViewAnimation } from "@/hooks/useInViewAnimation";
 const About = () => {
+  const [ref, isVisible] = useInViewAnimation();
   const highlights = [
     {
       icon: Code,
@@ -37,7 +38,12 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-tech">
+    <section id="about" ref={ref}
+      className={`py-20 bg-gradient-tech transition-all duration-700 ease-out transform ${isVisible
+        ? "opacity-100 translate-y-0"
+        : "opacity-0 translate-y-10"
+        }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-up">
           <Badge variant="outline" className="mb-4 text-primary border-primary/30">

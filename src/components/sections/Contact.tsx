@@ -6,8 +6,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useInViewAnimation } from "@/hooks/useInViewAnimation";
 
 const Contact = () => {
+  const [ref, isVisible] = useInViewAnimation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,7 +20,7 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
@@ -43,7 +45,6 @@ const Contact = () => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-
   const contactInfo = [
     {
       icon: Mail,
@@ -74,7 +75,7 @@ const Contact = () => {
     },
     {
       icon: Linkedin,
-      label: "LinkedIn", 
+      label: "LinkedIn",
       href: "https://www.linkedin.com/in/prince-sanchela",
       color: "hover:text-blue-500"
     },
@@ -87,7 +88,11 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" ref={ref}
+      className={`py-20 transition-all duration-700 ease-out transform ${isVisible
+        ? "opacity-100 translate-y-0"
+        : "opacity-0 translate-y-10"
+        }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-up">
           <Badge variant="outline" className="mb-4 text-primary border-primary/30">
@@ -97,7 +102,7 @@ const Contact = () => {
             Let&apos;s <span className="text-primary">Work</span> Together
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I&apos;m always interested in new opportunities and exciting projects. 
+            I&apos;m always interested in new opportunities and exciting projects.
             Whether you have a question or just want to say hi, feel free to reach out!
           </p>
         </div>
@@ -169,9 +174,9 @@ const Contact = () => {
                     className="bg-background/50 resize-none"
                   />
                 </div>
-                <Button 
-                  type="submit" 
-                  size="lg" 
+                <Button
+                  type="submit"
+                  size="lg"
                   className="w-full bg-primary hover:bg-primary-glow shadow-glow hover:shadow-glow transition-all duration-300"
                 >
                   <Send className="mr-2" size={20} />
@@ -197,7 +202,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <p className="font-medium">{info.label}</p>
-                        <a 
+                        <a
                           href={info.href}
                           className="text-muted-foreground hover:text-primary transition-colors"
                         >
@@ -239,7 +244,7 @@ const Contact = () => {
               <CardContent className="p-6">
                 <h4 className="font-semibold mb-3">Quick Response</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  I typically respond to messages within 24 hours. For urgent matters, 
+                  I typically respond to messages within 24 hours. For urgent matters,
                   feel free to reach out via phone or LinkedIn for faster communication.
                 </p>
               </CardContent>

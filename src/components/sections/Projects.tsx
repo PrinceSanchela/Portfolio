@@ -2,8 +2,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, Code } from "lucide-react";
+import { useInViewAnimation } from "@/hooks/useInViewAnimation";
+
 
 const Projects = () => {
+  const [ref, isVisible] = useInViewAnimation();
   const projects = [
     {
       title: "E-Commerce Platform",
@@ -65,7 +68,13 @@ const Projects = () => {
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
-    <section id="projects" className="py-20 bg-gradient-tech">
+    <section id="projects"
+      ref={ref}
+      className={`py-20 bg-gradient-tech transition-all duration-700 ease-out transform ${isVisible
+        ? "opacity-100 translate-y-0"
+        : "opacity-0 translate-y-10"
+        }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-up">
           <Badge variant="outline" className="mb-4 text-primary border-primary/30">
@@ -83,14 +92,14 @@ const Projects = () => {
         {/* Featured Projects */}
         <div className="grid lg:grid-cols-2 gap-8 mb-16">
           {featuredProjects.map((project, index) => (
-            <Card 
+            <Card
               key={index}
               className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 group animate-fade-up overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="aspect-video overflow-hidden">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -107,7 +116,7 @@ const Projects = () => {
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech, techIndex) => (
-                    <Badge 
+                    <Badge
                       key={techIndex}
                       variant="secondary"
                       className="bg-muted/50 text-foreground"
@@ -117,15 +126,15 @@ const Projects = () => {
                   ))}
                 </div>
                 <div className="flex gap-3">
-                  <Button 
+                  <Button
                     size="sm"
                     className="bg-primary hover:bg-primary-glow"
                   >
                     <ExternalLink size={16} className="mr-2" />
                     Live Demo
                   </Button>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     size="sm"
                     className="border-primary/30 text-primary hover:bg-primary/10"
                   >
@@ -143,13 +152,13 @@ const Projects = () => {
           <h3 className="text-2xl font-bold mb-8 text-center">More Projects</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherProjects.map((project, index) => (
-              <Card 
+              <Card
                 key={index}
                 className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 group"
               >
                 <div className="aspect-video overflow-hidden">
-                  <img 
-                    src={project.image} 
+                  <img
+                    src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -163,7 +172,7 @@ const Projects = () => {
                   </p>
                   <div className="flex flex-wrap gap-1 mb-4">
                     {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                      <Badge 
+                      <Badge
                         key={techIndex}
                         variant="secondary"
                         className="text-xs bg-muted/50 text-foreground"
@@ -178,7 +187,7 @@ const Projects = () => {
                     )}
                   </div>
                   <div className="flex gap-2">
-                    <Button 
+                    <Button
                       size="sm"
                       variant="outline"
                       className="flex-1 border-primary/30 text-primary hover:bg-primary/10"
@@ -186,7 +195,7 @@ const Projects = () => {
                       <ExternalLink size={14} className="mr-1" />
                       Demo
                     </Button>
-                    <Button 
+                    <Button
                       size="sm"
                       variant="outline"
                       className="flex-1 border-primary/30 text-primary hover:bg-primary/10"
@@ -202,8 +211,8 @@ const Projects = () => {
         </div>
 
         <div className="text-center mt-12 animate-fade-up">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             size="lg"
             className="border-primary/30 text-primary hover:bg-primary/10"
           >

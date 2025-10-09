@@ -3,8 +3,10 @@ import { Badge } from "@/components/ui/badge";
 import { Github, Linkedin, Mail, Download, ArrowDown, Briefcase } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 import HeroR from "@/components/sections/HeroR";
+import { useInViewAnimation } from "@/hooks/useInViewAnimation";
 
 const Hero = () => {
+  const [ref, isVisible] = useInViewAnimation();
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -15,7 +17,12 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      ref={ref}
+      className={`min-h-screen flex items-center justify-center relative overflow-hidden transition-all duration-700 ease-out transform ${isVisible
+        ? "opacity-100 translate-y-0"
+        : "opacity-0 translate-y-10"
+        }`}
+
       style={{
         backgroundImage: `url(${heroImage})`,
         backgroundSize: 'cover',

@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Github, Linkedin, Mail, Heart, ArrowUp } from "lucide-react";
+import { useInViewAnimation } from "@/hooks/useInViewAnimation";
 
 const Footer = () => {
+  const [ref, isVisible] = useInViewAnimation();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -28,7 +30,13 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-card/30 border-t border-border/50 backdrop-blur-sm">
+    <footer
+      ref={ref}
+      className={`bg-card/30 border-t border-border/50 backdrop-blur-sm transition-all duration-700 ease-out transform ${isVisible
+        ? "opacity-100 translate-y-0"
+        : "opacity-0 translate-y-10"
+        }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
@@ -37,7 +45,7 @@ const Footer = () => {
               &lt;Prince Sanchela/&gt;
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Full Stack Developer passionate about building innovative web solutions 
+              Full Stack Developer passionate about building innovative web solutions
               with modern technologies.
             </p>
             <div className="flex space-x-3">
@@ -84,7 +92,7 @@ const Footer = () => {
               <p>📱 +91 94288 33210</p>
               <p>📍 India</p>
             </div>
-            <Button 
+            <Button
               onClick={() => scrollToSection("contact")}
               variant="outline"
               size="sm"
@@ -102,7 +110,7 @@ const Footer = () => {
           <div className="text-muted-foreground text-sm flex items-center">
             Made by Prince Sanchela
           </div>
-          
+
           <div className="text-muted-foreground text-sm">
             © {new Date().getFullYear()} All rights reserved.
           </div>

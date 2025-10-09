@@ -1,8 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { useInViewAnimation } from "@/hooks/useInViewAnimation";
 
 const Skills = () => {
+  const [ref, isVisible] = useInViewAnimation();
   const skillCategories = [
     {
       title: "Frontend Development",
@@ -15,7 +17,7 @@ const Skills = () => {
       ]
     },
     {
-      title: "Backend Development", 
+      title: "Backend Development",
       skills: [
         { name: "Python", level: 95, color: "text-green-400" },
         { name: "Node.js", level: 85, color: "text-green-500" },
@@ -37,12 +39,18 @@ const Skills = () => {
   ];
 
   const tools = [
-    "Git", "GitHub", "VS Code", "Postman", "Figma", "Jira", 
+    "Git", "GitHub", "VS Code", "Postman", "Figma", "Jira",
     "Linux", "Nginx", "Jest", "Cypress", "Webpack", "Vite"
   ];
 
   return (
-    <section id="skills" className="py-20">
+    <section id="skills"
+      ref={ref}
+      className={`py-20 transition-all duration-700 ease-out transform ${isVisible
+        ? "opacity-100 translate-y-0"
+        : "opacity-0 translate-y-10"
+        }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-up">
           <Badge variant="outline" className="mb-4 text-primary border-primary/30">
@@ -52,14 +60,14 @@ const Skills = () => {
             My <span className="text-primary">Technology</span> Stack
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Here are the technologies and tools I use to bring ideas to life. 
+            Here are the technologies and tools I use to bring ideas to life.
             I&apos;m always learning and expanding my skillset.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {skillCategories.map((category, categoryIndex) => (
-            <Card 
+            <Card
               key={categoryIndex}
               className="bg-card/50 border-border/50 backdrop-blur-sm animate-fade-up"
               style={{ animationDelay: `${categoryIndex * 0.1}s` }}
@@ -77,8 +85,8 @@ const Skills = () => {
                           {skill.level}%
                         </span>
                       </div>
-                      <Progress 
-                        value={skill.level} 
+                      <Progress
+                        value={skill.level}
                         className="h-2 bg-muted"
                       />
                     </div>
@@ -96,7 +104,7 @@ const Skills = () => {
             </h3>
             <div className="flex flex-wrap justify-center gap-3">
               {tools.map((tool, index) => (
-                <Badge 
+                <Badge
                   key={index}
                   variant="secondary"
                   className="bg-muted/50 text-foreground hover:bg-primary/10 hover:text-primary transition-colors cursor-default"
