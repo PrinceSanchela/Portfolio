@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Code, FileText, User, Briefcase, Mail, BookOpen } from "lucide-react";
+import PrinceProgrammerLogo from "@/assets/Prince_programmer_logo.png"
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,11 +49,11 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-12">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <button 
+            <button
               onClick={() => scrollToSection("home")}
               className="text-xl font-bold font-mono text-primary hover:text-primary-glow transition-colors"
             >
-              <img className="h-10"src="src\assets\Prince_programmer_logo.png" alt="prince_logo"/>
+              <img className="h-10" src={PrinceProgrammerLogo} alt="prince_logo" />
             </button>
           </div>
 
@@ -65,11 +66,10 @@ const Navigation = () => {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${
-                      activeSection === item.id
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${activeSection === item.id
                         ? "text-primary bg-primary/10"
                         : "text-muted-foreground hover:text-primary hover:bg-muted/50"
-                    }`}
+                      }`}
                   >
                     <Icon size={16} />
                     {item.label}
@@ -103,11 +103,10 @@ const Navigation = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`w-full text-left px-3 py-2 rounded-md text-base font-medium transition-all duration-200 flex items-center gap-3 ${
-                    activeSection === item.id
+                  className={`w-full text-left px-3 py-2 rounded-md text-base font-medium transition-all duration-200 flex items-center gap-3 ${activeSection === item.id
                       ? "text-primary bg-primary/10"
                       : "text-muted-foreground hover:text-primary hover:bg-muted/50"
-                  }`}
+                    }`}
                 >
                   <Icon size={18} />
                   {item.label}

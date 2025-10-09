@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Github, Linkedin, Mail, Download, ArrowDown, Briefcase } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
+import ProfileDesktop from "@/assets/Profile_Desktop_img.png"
+import ProfileMobile from "@/assets/Profile_Mobile_img.png"
 import HeroR from "@/components/sections/HeroR";
 import { useInViewAnimation } from "@/hooks/useInViewAnimation";
 
@@ -38,14 +40,14 @@ const Hero = () => {
         <HeroR />
         {/* Profile Photo */}
         <div className="relative animate fade-in-20 animate-fade-in transition-opacity delay-300 duration-600 ease-in-out hover:-translate-y-1 hover:scale-110">
-          <img src="src\assets\Profile_Desktop_img.png" alt="profile photo" style={{ height: "27rem", width: "19rem", paddingBottom: "4rem" }} />
+          <img src={ProfileDesktop} alt="profile photo" style={{ height: "27rem", width: "19rem", paddingBottom: "4rem" }} />
         </div>
       </div>
       {/* Mobile Interface */}
       <div className=" relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:hidden" >
         {/* Profile Photo */}
         <div className="animate fade-in-20">
-          <img src="src\assets\Profile_Mobile_img.png" alt="profile photo" style={{ margin: "1rem" }} />
+          <img src={ProfileMobile} alt="profile photo" style={{ margin: "1rem" }} />
         </div>
         <HeroR />
       </div>
