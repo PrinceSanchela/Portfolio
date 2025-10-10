@@ -8,7 +8,7 @@ const HeroR: React.FC = () => {
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = "/Prince_Sanchela_Resume.pdf"; // your file name in public/
-    link.download = "Prince_Sanchela_Resume.pdf"; // file name for user
+    link.download = "Prince Sanchela Resume.pdf"; // file name for user
     link.click();
   };
 
