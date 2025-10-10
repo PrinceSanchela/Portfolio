@@ -10,6 +10,7 @@ const HeroR: React.FC = () => {
     link.href = "/Prince_Sanchela_Resume.pdf"; // your file name in public/
     link.download = "Prince Sanchela Resume.pdf"; // file name for user
     link.click();
+    alert("Prince Sanchela Resume downloaded successfully");
   };
 
   const scrollToSection = (sectionId: string) => {
