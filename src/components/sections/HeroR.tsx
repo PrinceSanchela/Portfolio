@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download, Briefcase } from "lucide-react";
+import { ReactTyped } from "react-typed";
 
-const HeroR = () => {
+const HeroR: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -18,9 +19,18 @@ const HeroR = () => {
         </h1>
 
         <h2 className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-6 font-mono">
-          &lt; Full Stack Developer /&gt;
+          <ReactTyped
+            strings={[
+              "Full Stack Web Developer",
+              "Python Programmer",
+              "App Developer",
+            ]}
+            typeSpeed={70}
+            backSpeed={40}
+            backDelay={1500}
+            loop
+          />
         </h2>
-
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
           Crafting scalable web applications with{" "}
           <span className="text-primary font-semibold">Python</span>,{" "}
