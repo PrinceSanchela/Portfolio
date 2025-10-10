@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { url } from "inspector";
 import { Github, Linkedin, Mail, Download, Briefcase } from "lucide-react";
 import { ReactTyped } from "react-typed";
+import { URL } from "url";
 
 const HeroR: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -12,7 +14,7 @@ const HeroR: React.FC = () => {
   return (
     <div className=" relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" >
       {/* Content */}
-      <div className="animate-fade-up pt-[2rem]">
+      <div className="animate-fade-up pt-[5rem]">
 
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 ...">
           Prince Sanchela
@@ -60,20 +62,24 @@ const HeroR: React.FC = () => {
         </div>
 
         <div className="flex justify-center gap-6">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-200"
-          >
-            <Github size={24} />
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-200"
-          >
-            <Linkedin size={24} />
-          </Button>
+          <a href="https://github.com/PrinceSanchela" target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-200"
+            >
+              <Github size={24} />
+            </Button>
+          </a>
+          <a href="https://www.linkedin.com/in/prince-sanchela" target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-200"
+            >
+              <Linkedin size={24} />
+            </Button>
+          </a>
           <Button
             variant="ghost"
             size="sm"

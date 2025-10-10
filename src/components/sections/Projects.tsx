@@ -212,7 +212,9 @@ const Projects = () => {
               className="border-primary/30 text-primary hover:bg-primary/10"
             >
               <Code className="mr-2" size={20} />
-              View All Projects on GitHub
+              <a href="https://github.com/PrinceSanchela/My-Projects.git">
+                View All Projects on GitHub
+              </a>
             </Button>
           </div>
         </div>
