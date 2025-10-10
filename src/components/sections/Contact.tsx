@@ -6,10 +6,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useInViewAnimation } from "@/hooks/useInViewAnimation";
+//import { useInViewAnimation } from "@/hooks/useInViewAnimation";
+import RevealOnScroll from "./RevealOnScroll";
 
 const Contact = () => {
-  const [ref, isVisible] = useInViewAnimation();
+  //const [ref, isVisible] = useInViewAnimation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -89,179 +90,167 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref}
-          className={`text-center mb-16 animate-fade-up transition-all duration-700 ease-out transform ${isVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-10"
-            }`}>
-          <Badge variant="outline" className="mb-4 text-primary border-primary/30">
-            Get In Touch
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Let&apos;s <span className="text-primary">Work</span> Together
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I&apos;m always interested in new opportunities and exciting projects.
-            Whether you have a question or just want to say hi, feel free to reach out!
-          </p>
-        </div>
+      <RevealOnScroll>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-fade-up">
+            <Badge variant="outline" className="mb-4 text-primary border-primary/30">
+              Get In Touch
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Let&apos;s <span className="text-primary">Work</span> Together
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              I&apos;m always interested in new opportunities and exciting projects.
+              Whether you have a question or just want to say hi, feel free to reach out!
+            </p>
+          </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <Card
-            ref={ref}
-            className={`bg-card/50 border-border/50 backdrop-blur-sm animate-fade-up transition-all duration-700 ease-out transform ${isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-              }`}>
-            <CardHeader>
-              <CardTitle className="text-2xl">Send a Message</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      Name *
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="Your name"
-                      required
-                      className="bg-background/50"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email *
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="your.email@example.com"
-                      required
-                      className="bg-background/50"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                    Subject
-                  </label>
-                  <Input
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    placeholder="What's this about?"
-                    className="bg-background/50"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Message *
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Tell me about your project or inquiry..."
-                    rows={6}
-                    required
-                    className="bg-background/50 resize-none"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-primary hover:bg-primary-glow shadow-glow hover:shadow-glow transition-all duration-300"
-                >
-                  <Send className="mr-2" size={20} />
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-          {/* Contact Info */}
-          <div style={{ animationDelay: "0.1s" }}
-            ref={ref}
-            className={`space-y-8 animate-fade-up transition-all duration-700 ease-out transform ${isVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-10"
-              }`}>
-            <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Form */}
+            <Card className="bg-card/50 border-border/50 backdrop-blur-sm animate-fade-up">
               <CardHeader>
-                <CardTitle className="text-xl">Contact Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {contactInfo.map((info, index) => {
-                  const Icon = info.icon;
-                  return (
-                    <div key={index} className="flex items-center space-x-4">
-                      <div className="p-3 bg-primary/10 rounded-lg">
-                        <Icon size={24} className="text-primary" />
-                      </div>
-                      <div>
-                        <p className="font-medium">{info.label}</p>
-                        <a
-                          href={info.href}
-                          className="text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          {info.value}
-                        </a>
-                      </div>
-                    </div>
-                  );
-                })}
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-xl">Follow Me</CardTitle>
+                <CardTitle className="text-2xl">Send a Message</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex space-x-4">
-                  {socialLinks.map((social, index) => {
-                    const Icon = social.icon;
-                    return (
-                      <a
-                        key={index}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`p-3 bg-muted/50 rounded-lg text-muted-foreground ${social.color} transition-all duration-200 hover:scale-110`}
-                        aria-label={social.label}
-                      >
-                        <Icon size={24} />
-                      </a>
-                    );
-                  })}
-                </div>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2">
+                        Name *
+                      </label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Your name"
+                        required
+                        className="bg-background/50"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+                        Email *
+                      </label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="your.email@example.com"
+                        required
+                        className="bg-background/50"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                      Subject
+                    </label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      placeholder="What's this about?"
+                      className="bg-background/50"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2">
+                      Message *
+                    </label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Tell me about your project or inquiry..."
+                      rows={6}
+                      required
+                      className="bg-background/50 resize-none"
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-primary hover:bg-primary-glow shadow-glow hover:shadow-glow transition-all duration-300"
+                  >
+                    <Send className="mr-2" size={20} />
+                    Send Message
+                  </Button>
+                </form>
               </CardContent>
             </Card>
 
-            <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
-              <CardContent className="p-6">
-                <h4 className="font-semibold mb-3">Quick Response</h4>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  I typically respond to messages within 24 hours. For urgent matters,
-                  feel free to reach out via phone or LinkedIn for faster communication.
-                </p>
-              </CardContent>
-            </Card>
+            {/* Contact Info */}
+            <div className="space-y-8 animate-fade-up " style={{ animationDelay: "0.1s" }}>
+              <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-xl">Contact Information</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  {contactInfo.map((info, index) => {
+                    const Icon = info.icon;
+                    return (
+                      <div key={index} className="flex items-center space-x-4">
+                        <div className="p-3 bg-primary/10 rounded-lg">
+                          <Icon size={24} className="text-primary" />
+                        </div>
+                        <div>
+                          <p className="font-medium">{info.label}</p>
+                          <a
+                            href={info.href}
+                            className="text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            {info.value}
+                          </a>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-xl">Follow Me</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex space-x-4">
+                    {socialLinks.map((social, index) => {
+                      const Icon = social.icon;
+                      return (
+                        <a
+                          key={index}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`p-3 bg-muted/50 rounded-lg text-muted-foreground ${social.color} transition-all duration-200 hover:scale-110`}
+                          aria-label={social.label}
+                        >
+                          <Icon size={24} />
+                        </a>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
+                <CardContent className="p-6">
+                  <h4 className="font-semibold mb-3">Quick Response</h4>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    I typically respond to messages within 24 hours. For urgent matters,
+                    feel free to reach out via phone or LinkedIn for faster communication.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
-      </div>
+      </RevealOnScroll>
     </section>
   );
 };

@@ -2,11 +2,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, Code } from "lucide-react";
-import { useInViewAnimation } from "@/hooks/useInViewAnimation";
-
+//import { useInViewAnimation } from "@/hooks/useInViewAnimation";
+import RevealOnScroll from "@/components/sections/RevealOnScroll";
 
 const Projects = () => {
-  const [ref, isVisible] = useInViewAnimation();
+  //const [ref, isVisible] = useInViewAnimation();
   const projects = [
     {
       title: "E-Commerce Platform",
@@ -68,96 +68,29 @@ const Projects = () => {
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
-    <section id="projects" className="py-20 bg-gradient-tech">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-up">
-          <Badge variant="outline" className="mb-4 text-primary border-primary/30">
-            Portfolio
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Featured <span className="text-primary">Projects</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Here are some of my recent projects that showcase my skills in full stack development.
-            Each project demonstrates different aspects of modern web development.
-          </p>
-        </div>
+    <section id="projects" className="py-20 bg-gradient-tech"    >
+      <RevealOnScroll direction="up">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 animate-fade-up">
+            <Badge variant="outline" className="mb-4 text-primary border-primary/30">
+              Portfolio
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Featured <span className="text-primary">Projects</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Here are some of my recent projects that showcase my skills in full stack development.
+              Each project demonstrates different aspects of modern web development.
+            </p>
+          </div>
 
-        {/* Featured Projects */}
-        <div
-          ref={ref}
-          className={`grid lg:grid-cols-2 gap-8 mb-16 transition-all duration-700 ease-out transform ${isVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-10"
-            }`}>
-          {featuredProjects.map((project, index) => (
-            <Card
-              key={index}
-              className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 group animate-fade-up overflow-hidden"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="aspect-video overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <Badge className="bg-primary/10 text-primary">Featured</Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech, techIndex) => (
-                    <Badge
-                      key={techIndex}
-                      variant="secondary"
-                      className="bg-muted/50 text-foreground"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <Button
-                    size="sm"
-                    className="bg-primary hover:bg-primary-glow"
-                  >
-                    <ExternalLink size={16} className="mr-2" />
-                    Live Demo
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="border-primary/30 text-primary hover:bg-primary/10"
-                  >
-                    <Github size={16} className="mr-2" />
-                    Code
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Other Projects */}
-        <div ref={ref}
-          className={`animate-fade-up transition-all duration-700 ease-out transform ${isVisible
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-10"
-            }`}>
-          <h3 className="text-2xl font-bold mb-8 text-center">More Projects</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {otherProjects.map((project, index) => (
+          {/* Featured Projects */}
+          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+            {featuredProjects.map((project, index) => (
               <Card
                 key={index}
-                className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 group"
+                className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 group animate-fade-up overflow-hidden"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="aspect-video overflow-hidden">
                   <img
@@ -166,44 +99,41 @@ const Projects = () => {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg">{project.title}</CardTitle>
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-xl">{project.title}</CardTitle>
+                    <Badge className="bg-primary/10 text-primary">Featured</Badge>
+                  </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                  <p className="text-muted-foreground mb-4 leading-relaxed">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech, techIndex) => (
                       <Badge
                         key={techIndex}
                         variant="secondary"
-                        className="text-xs bg-muted/50 text-foreground"
+                        className="bg-muted/50 text-foreground"
                       >
                         {tech}
                       </Badge>
                     ))}
-                    {project.technologies.length > 3 && (
-                      <Badge variant="secondary" className="text-xs bg-muted/50 text-muted-foreground">
-                        +{project.technologies.length - 3}
-                      </Badge>
-                    )}
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-3">
                     <Button
                       size="sm"
-                      variant="outline"
-                      className="flex-1 border-primary/30 text-primary hover:bg-primary/10"
+                      className="bg-primary hover:bg-primary-glow"
                     >
-                      <ExternalLink size={14} className="mr-1" />
-                      Demo
+                      <ExternalLink size={16} className="mr-2" />
+                      Live Demo
                     </Button>
                     <Button
-                      size="sm"
                       variant="outline"
-                      className="flex-1 border-primary/30 text-primary hover:bg-primary/10"
+                      size="sm"
+                      className="border-primary/30 text-primary hover:bg-primary/10"
                     >
-                      <Github size={14} className="mr-1" />
+                      <Github size={16} className="mr-2" />
                       Code
                     </Button>
                   </div>
@@ -211,19 +141,82 @@ const Projects = () => {
               </Card>
             ))}
           </div>
-        </div>
 
-        <div className="text-center mt-12 animate-fade-up">
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-primary/30 text-primary hover:bg-primary/10"
-          >
-            <Code className="mr-2" size={20} />
-            View All Projects on GitHub
-          </Button>
+          {/* Other Projects */}
+          <div className="animate-fade-up">
+            <h3 className="text-2xl font-bold mb-8 text-center">More Projects</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {otherProjects.map((project, index) => (
+                <Card
+                  key={index}
+                  className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 group"
+                >
+                  <div className="aspect-video overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg">{project.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                        <Badge
+                          key={techIndex}
+                          variant="secondary"
+                          className="text-xs bg-muted/50 text-foreground"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                      {project.technologies.length > 3 && (
+                        <Badge variant="secondary" className="text-xs bg-muted/50 text-muted-foreground">
+                          +{project.technologies.length - 3}
+                        </Badge>
+                      )}
+                    </div>
+                    <div className="flex gap-2">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="flex-1 border-primary/30 text-primary hover:bg-primary/10"
+                      >
+                        <ExternalLink size={14} className="mr-1" />
+                        Demo
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="flex-1 border-primary/30 text-primary hover:bg-primary/10"
+                      >
+                        <Github size={14} className="mr-1" />
+                        Code
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-center mt-12 animate-fade-up">
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-primary/30 text-primary hover:bg-primary/10"
+            >
+              <Code className="mr-2" size={20} />
+              View All Projects on GitHub
+            </Button>
+          </div>
         </div>
-      </div>
+      </RevealOnScroll>
     </section>
   );
 };
