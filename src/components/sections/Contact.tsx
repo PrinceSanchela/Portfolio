@@ -1,3 +1,4 @@
+import React, { useRef } from "react";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,46 +7,119 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-//import { useInViewAnimation } from "@/hooks/useInViewAnimation";
+import emailjs from "emailjs-com";
 import RevealOnScroll from "./RevealOnScroll";
 
-const Contact = () => {
-  //const [ref, isVisible] = useInViewAnimation();
-  const [formData, setFormData] = useState({
+const Contact: React.FC = () => {
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   email: "",
+  //   subject: "",
+  //   message: ""
+  // });
+  type Errors = {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  };
+
+  const [errors, setErrors] = useState<Errors>({
     name: "",
     email: "",
     subject: "",
-    message: ""
+    message: "",
   });
+
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const form = useRef<HTMLFormElement>(null);
 
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
-      toast({
-        title: "Validation Error",
-        description: "Please fill in all required fields.",
-        variant: "destructive"
-      });
-      return;
+  // Validation function
+  const validateForm = (): boolean => {
+    let valid = true;
+    const newErrors = { name: "", email: "", subject: "", message: "" };
+    const name = (form.current?.user_name.value || "").trim();
+    const email = (form.current?.user_email.value || "").trim();
+    const subject = (form.current?.subject.value || "").trim();
+    const message = (form.current?.message.value || "").trim();
+
+    // Validate Name
+    if (!name) {
+      newErrors.name = "Please enter your name.";
+      valid = false;
     }
 
-    // Simulate form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your message. I'll get back to you soon!",
-    });
+    // Validate Email
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Please enter a valid email.";
+      valid = false;
+    }
 
-    // Reset form
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    // Validate Message
+    if (message.length < 10) {
+      newErrors.message = "Message must be at least 10 characters.";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+  // 🔹 Send email handler
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!form.current || !validateForm()) return;
+
+    emailjs
+      .sendForm(
+        "service_yzyclmc", // your service ID
+        "template_yha283u", // your template ID
+        form.current,
+        "cWgs3jQaP0aS2QmiH" // your public key
+      )
+      .then(
+        () => {
+          alert(" Message sent successfully!");
+          form.current?.reset();
+          setErrors({ name: "", email: "", subject: "", message: "" });
+        },
+        (error) => {
+          console.error("Failed to send message:", error);
+          alert("Something went wrong. Please try again later.");
+        }
+      );
+
   };
+
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   // Basic validation
+  //   if (!formData.name || !formData.email || !formData.message) {
+  //     toast({
+  //       title: "Validation Error",
+  //       description: "Please fill in all required fields.",
+  //       variant: "destructive"
+  //     });
+  //     return;
+  //   }
+
+  //   // Simulate form submission
+  //   toast({
+  //     title: "Message Sent!",
+  //     description: "Thank you for your message. I'll get back to you soon!",
+  //   });
+
+  //   // Reset form
+  //   setFormData({ name: "", email: "", subject: "", message: "" });
+  // };
+
+  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  //   const { name, value } = e.target;
+  //   setFormData(prev => ({ ...prev, [name]: value }));
+  // };
   const contactInfo = [
     {
       icon: Mail,
@@ -112,7 +186,7 @@ const Contact = () => {
                 <CardTitle className="text-2xl">Send a Message</CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form ref={form} onSubmit={sendEmail} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -120,13 +194,15 @@ const Contact = () => {
                       </label>
                       <Input
                         id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
+                        name="user_name"
                         placeholder="Your name"
                         required
-                        className="bg-background/50"
+                        className={`bg-background/50 focus:outline-none focus:ring-2 ${errors.name ? "ring-red-500" : "focus:ring-blue-500"
+                          }`}
                       />
+                      {errors.name && (
+                        <span className="text-red-400 text-sm">{errors.name}</span>
+                      )}
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium mb-2">
@@ -134,14 +210,17 @@ const Contact = () => {
                       </label>
                       <Input
                         id="email"
-                        name="email"
+                        name="user_email"
                         type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
                         placeholder="your.email@example.com"
                         required
-                        className="bg-background/50"
+                        className={`bg-background/50 focus:outline-none focus:ring-2 ${errors.email ? "ring-red-500" : "focus:ring-blue-500"
+                          }`}
                       />
+                      {errors.email && (
+                        <span className="text-red-400 text-sm">{errors.email}</span>
+                      )}
+
                     </div>
                   </div>
                   <div>
@@ -151,11 +230,14 @@ const Contact = () => {
                     <Input
                       id="subject"
                       name="subject"
-                      value={formData.subject}
-                      onChange={handleInputChange}
+                      required
                       placeholder="What's this about?"
-                      className="bg-background/50"
+                      className={`bg-background/50 focus:outline-none focus:ring-2 ${errors.subject ? "ring-red-500" : "focus:ring-blue-500"
+                        }`}
                     />
+                    {errors.subject && (
+                      <span className="text-red-400 text-sm">{errors.subject}</span>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium mb-2">
@@ -164,18 +246,20 @@ const Contact = () => {
                     <Textarea
                       id="message"
                       name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
                       placeholder="Tell me about your project or inquiry..."
                       rows={6}
                       required
-                      className="bg-background/50 resize-none"
+                      className={`bg-background/50 resize-none focus:outline-none focus:ring-2 ${errors.message ? "ring-red-500" : "focus:ring-blue-500"
+                        }`}
                     />
+                    {errors.message && (
+                      <span className="text-red-400 text-sm">{errors.message}</span>
+                    )}
                   </div>
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-primary hover:bg-primary-glow shadow-glow hover:shadow-glow transition-all duration-300"
+                    className="w-full bg-primary hover:bg-primary-glow shadow-glow hover:shadow-glow transition-all duration-300 "
                   >
                     <Send className="mr-2" size={20} />
                     Send Message
