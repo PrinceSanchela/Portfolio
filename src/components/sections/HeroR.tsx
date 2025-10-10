@@ -5,6 +5,13 @@ import { ReactTyped } from "react-typed";
 import { URL } from "url";
 
 const HeroR: React.FC = () => {
+  const handleDownload = () => {
+    const link = document.createElement("a");
+    link.href = "/Prince_Sanchela_Resume.pdf"; // your file name in public/
+    link.download = "Prince_Sanchela_Resume.pdf"; // file name for user
+    link.click();
+  };
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -52,9 +59,10 @@ const HeroR: React.FC = () => {
           </Button>
 
           <Button
+            onClick={handleDownload}
             variant="outline"
             size="lg"
-            className="border-primary/30 text-primary hover:bg-primary/10"
+            className="border-primary/30 text-primary hover:bg-primary/10 hover:text-muted-foreground"
           >
             <Download className="mr-2" size={20} />
             Download Resume
