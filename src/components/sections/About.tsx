@@ -38,14 +38,14 @@ const About = () => {
   ];
 
   return (
-    <section id="about" ref={ref}
-      className={`py-20 bg-gradient-tech transition-all duration-700 ease-out transform ${isVisible
-        ? "opacity-100 translate-y-0"
-        : "opacity-0 translate-y-10"
-        }`}
-    >
+    <section id="about" className="py-20 bg-gradient-tech ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-up">
+        <div ref={ref}
+          className={`text-center mb-16 animate-fade-up transition-all duration-700 ease-out transform ${isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-10"
+            }`}
+        >
           <Badge variant="outline" className="mb-4 text-primary border-primary/30">
             About Me
           </Badge>
@@ -60,7 +60,12 @@ const About = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <div className="animate-fade-up">
+          <div ref={ref}
+            className={`animate-fade-up transition-all duration-700 ease-out transform ${isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+              }`}
+          >
             <h3 className="text-2xl font-bold mb-6">My Journey</h3>
             <div className="space-y-4 text-muted-foreground">
               <p>
@@ -81,7 +86,11 @@ const About = () => {
             </div>
           </div>
 
-          <div className="animate-fade-up">
+          <div ref={ref}
+            className={`animate-fade-up transition-all duration-700 ease-out transform ${isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+              }`}>
             <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
               <CardContent className="p-6">
                 <h4 className="text-lg font-semibold mb-4">Quick Facts</h4>
@@ -108,7 +117,12 @@ const About = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-up">
+        <div
+          ref={ref}
+          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-up transition-all duration-700 ease-out transform ${isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-10"
+            }`}>
           {highlights.map((highlight, index) => {
             const Icon = highlight.icon;
             return (

@@ -68,13 +68,7 @@ const Projects = () => {
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
-    <section id="projects"
-      ref={ref}
-      className={`py-20 bg-gradient-tech transition-all duration-700 ease-out transform ${isVisible
-        ? "opacity-100 translate-y-0"
-        : "opacity-0 translate-y-10"
-        }`}
-    >
+    <section id="projects" className="py-20 bg-gradient-tech">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-up">
           <Badge variant="outline" className="mb-4 text-primary border-primary/30">
@@ -90,7 +84,12 @@ const Projects = () => {
         </div>
 
         {/* Featured Projects */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+        <div
+          ref={ref}
+          className={`grid lg:grid-cols-2 gap-8 mb-16 transition-all duration-700 ease-out transform ${isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-10"
+            }`}>
           {featuredProjects.map((project, index) => (
             <Card
               key={index}
@@ -148,7 +147,11 @@ const Projects = () => {
         </div>
 
         {/* Other Projects */}
-        <div className="animate-fade-up">
+        <div ref={ref}
+          className={`animate-fade-up transition-all duration-700 ease-out transform ${isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-10"
+            }`}>
           <h3 className="text-2xl font-bold mb-8 text-center">More Projects</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherProjects.map((project, index) => (

@@ -88,13 +88,13 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" ref={ref}
-      className={`py-20 transition-all duration-700 ease-out transform ${isVisible
-        ? "opacity-100 translate-y-0"
-        : "opacity-0 translate-y-10"
-        }`}>
+    <section id="contact" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-up">
+        <div ref={ref}
+          className={`text-center mb-16 animate-fade-up transition-all duration-700 ease-out transform ${isVisible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-10"
+            }`}>
           <Badge variant="outline" className="mb-4 text-primary border-primary/30">
             Get In Touch
           </Badge>
@@ -109,7 +109,12 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <Card className="bg-card/50 border-border/50 backdrop-blur-sm animate-fade-up">
+          <Card
+            ref={ref}
+            className={`bg-card/50 border-border/50 backdrop-blur-sm animate-fade-up transition-all duration-700 ease-out transform ${isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+              }`}>
             <CardHeader>
               <CardTitle className="text-2xl">Send a Message</CardTitle>
             </CardHeader>
@@ -187,7 +192,12 @@ const Contact = () => {
           </Card>
 
           {/* Contact Info */}
-          <div className="space-y-8 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+          <div style={{ animationDelay: "0.1s" }}
+            ref={ref}
+            className={`space-y-8 animate-fade-up transition-all duration-700 ease-out transform ${isVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+              }`}>
             <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="text-xl">Contact Information</CardTitle>
