@@ -27,7 +27,7 @@ const RevealOnScroll: React.FC<RevealOnScrollProps> = ({
                     }
                 });
             },
-            { threshold: 0.2 } // visible only when 20% of section is shown
+            { threshold: 0.1 } // visible only when 20% of section is shown
         );
 
         const current = ref.current;

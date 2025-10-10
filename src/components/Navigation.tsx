@@ -46,7 +46,7 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-12">
+        <div className="flex justify-between items-center h-10">
           {/* Logo */}
           <div className="flex-shrink-0">
             <button
@@ -67,8 +67,8 @@ const Navigation = () => {
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
                     className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${activeSection === item.id
-                        ? "text-primary bg-primary/10"
-                        : "text-muted-foreground hover:text-primary hover:bg-muted/50"
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground hover:text-primary hover:bg-muted/50"
                       }`}
                   >
                     <Icon size={16} />
@@ -104,8 +104,8 @@ const Navigation = () => {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`w-full text-left px-3 py-2 rounded-md text-base font-medium transition-all duration-200 flex items-center gap-3 ${activeSection === item.id
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-primary hover:bg-muted/50"
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-primary hover:bg-muted/50"
                     }`}
                 >
                   <Icon size={18} />

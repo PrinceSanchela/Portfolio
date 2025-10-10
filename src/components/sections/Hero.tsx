@@ -6,10 +6,9 @@ import ProfileDesktop from "@/assets/Profile_Desktop_img.png"
 import ProfileMobile from "@/assets/Profile_Mobile_img.png"
 import HeroR from "@/components/sections/HeroR";
 import RevealOnScroll from "./RevealOnScroll";
-//import { useInViewAnimation } from "@/hooks/useInViewAnimation";
 
 const Hero = () => {
-  //const [ref, isVisible] = useInViewAnimation();
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -41,8 +40,8 @@ const Hero = () => {
         {/* Mobile Interface */}
         <div className=" relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:hidden" >
           {/* Profile Photo */}
-          <div className="animate fade-in-20">
-            <img src={ProfileMobile} alt="profile photo" style={{ margin: "1rem" }} />
+          <div className=" animate fade-in-20 mt-[3rem]" style={{ padding: "1rem" }} >
+            <img src={ProfileMobile} alt="profile photo" />
           </div>
           <HeroR />
         </div>
@@ -59,7 +58,7 @@ const Hero = () => {
           </Button>
         </div>
       </RevealOnScroll>
-    </section>
+    </section >
   );
 };
 
