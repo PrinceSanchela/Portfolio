@@ -9,9 +9,9 @@ const Projects = () => {
   //const [ref, isVisible] = useInViewAnimation();
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "E-Commerce Platform - Shop Hub",
       description: "A full-stack e-commerce solution with React frontend, Python backend, and MongoDB database. Features include user authentication, payment integration, inventory management, and admin dashboard.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+      image: "https://github.com/PrinceSanchela/Portfolio/blob/main/src/assets/shop_hub_project.png",
       technologies: ["React", "Python", "MongoDB", "Stripe", "AWS"],
       liveUrl: "#",
       githubUrl: "#",
