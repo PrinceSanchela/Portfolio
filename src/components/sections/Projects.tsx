@@ -5,6 +5,7 @@ import ShopHubProject from "../../assets/shop_hub_project.png"
 import { ExternalLink, Github, Code } from "lucide-react";
 
 import RevealOnScroll from "@/components/sections/RevealOnScroll";
+import { url } from "inspector";
 
 const Projects = () => {
 
@@ -15,7 +16,7 @@ const Projects = () => {
       image: ShopHubProject,
       technologies: ["React", "Python", "MongoDB", "Stripe", "AWS"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "https://github.com/PrinceSanchela/My-Projects/tree/88140143c71f2643d4cadfa7a40d79db0018faaa/E-commerce%20web%20-%20Shop%20Hub",
       featured: true
     },
     {
@@ -132,7 +133,8 @@ const Projects = () => {
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-primary/30 text-primary hover:bg-primary/10"
+                      className="border-primary/30 text-white hover:primary/10"
+                      onClick={() => window.open("https://github.com/PrinceSanchela/My-Projects/tree/88140143c71f2643d4cadfa7a40d79db0018faaa/E-commerce%20web%20-%20Shop%20Hub", "_blank")}
                     >
                       <Github size={16} className="mr-2" />
                       Code
