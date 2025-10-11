@@ -50,9 +50,7 @@ const About = () => {
               Building the <span className="text-primary">Future</span> of Web
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              I&apos;m a passionate full stack developer with expertise in modern web technologies.
-              I love creating efficient, scalable solutions that solve real-world problems and
-              deliver exceptional user experiences.
+              I&apos;m Prince — a tech enthusiast and B.Tech student in VLSI at SVNIT. I love building digital solutions through web and app development, Python programming, and creative problem-solving. I’m always exploring new technologies, from data science to Arduino projects, and recently started my freelancing journey to turn my passion into real-world experience. My goal is to keep learning, growing, and creating meaningful digital experiences.
             </p>
           </div>
 
