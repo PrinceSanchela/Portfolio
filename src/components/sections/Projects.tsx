@@ -1,18 +1,18 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import ShopHubProject from "src/assets/shop_hub_project.png"
+import ShopHubProject from "../../assets/shop_hub_project.png"
 import { ExternalLink, Github, Code } from "lucide-react";
-//import { useInViewAnimation } from "@/hooks/useInViewAnimation";
+
 import RevealOnScroll from "@/components/sections/RevealOnScroll";
 
 const Projects = () => {
-  //const [ref, isVisible] = useInViewAnimation();
+
   const projects = [
     {
       title: "E-Commerce Platform - Shop Hub",
       description: "A full-stack e-commerce solution with React frontend, Python backend, and MongoDB database. Features include user authentication, payment integration, inventory management, and admin dashboard.",
-      image: "src/assets/shop_hub_project.png",
+      image: ShopHubProject,
       technologies: ["React", "Python", "MongoDB", "Stripe", "AWS"],
       liveUrl: "#",
       githubUrl: "#",
