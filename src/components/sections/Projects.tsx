@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ShopHubProject from "../../assets/shop_hub_project.png"
+import TaskFlowProject from "../../assets/taskflow_project.png"
 import { ExternalLink, Github, Code } from "lucide-react";
 
 import RevealOnScroll from "@/components/sections/RevealOnScroll";
@@ -15,17 +16,17 @@ const Projects = () => {
       description: "A full-stack e-commerce solution with React frontend, Python backend, and MongoDB database. Features include user authentication, payment integration, inventory management, and admin dashboard.",
       image: ShopHubProject,
       technologies: ["React", "Python", "MongoDB", "Stripe", "AWS"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/PrinceSanchela/My-Projects/tree/88140143c71f2643d4cadfa7a40d79db0018faaa/E-commerce%20web%20-%20Shop%20Hub",
+      liveUrl: "https://shophub-princesanchela.vercel.app/",
+      githubUrl: "https://github.com/PrinceSanchela/My-Projects/tree/0d4a34eaa3845554b8dcefa8e1333ef90b1cc543/ShopHub",
       featured: true
     },
     {
-      title: "Task Management Dashboard",
+      title: "Task Management Dashboard - TaskFlow",
       description: "A collaborative project management tool built with React and Node.js. Features real-time updates, team collaboration, task tracking, and analytics dashboard.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-      technologies: ["React", "Node.js", "PostgreSQL", "Socket.io", "JWT"],
-      liveUrl: "#",
-      githubUrl: "#",
+      image: TaskFlowProject,
+      technologies: ["React", "Node.js", "PostgreSQL", "Socket.io", "JWT", "Supabase"],
+      liveUrl: "https://taskflow-princesanchela.vercel.app",
+      githubUrl: "https://github.com/PrinceSanchela/My-Projects/tree/0d4a34eaa3845554b8dcefa8e1333ef90b1cc543/TaskFlow",
       featured: true
     },
     {
@@ -126,7 +127,7 @@ const Projects = () => {
                     <Button
                       size="sm"
                       className="bg-primary hover:bg-primary-glow"
-                      onClick={() => window.open("https://shophub-princesanchela.vercel.app/")}
+                      onClick={() => window.open(project.liveUrl)}
                     >
                       <ExternalLink size={16} className="mr-2" />
                       Live Demo
@@ -135,7 +136,7 @@ const Projects = () => {
                       variant="outline"
                       size="sm"
                       className="border-primary/30 text-white hover:primary/10"
-                      onClick={() => window.open("https://github.com/PrinceSanchela/My-Projects/tree/88140143c71f2643d4cadfa7a40d79db0018faaa/E-commerce%20web%20-%20Shop%20Hub", "_blank")}
+                      onClick={() => window.open(project.githubUrl, "_blank")}
                     >
                       <Github size={16} className="mr-2" />
                       Code
@@ -190,6 +191,7 @@ const Projects = () => {
                         size="sm"
                         variant="outline"
                         className="flex-1 border-primary/30 text-primary hover:bg-primary/10"
+                        onClick={() => window.open(project.liveUrl)}
                       >
                         <ExternalLink size={14} className="mr-1" />
                         Demo
@@ -198,6 +200,7 @@ const Projects = () => {
                         size="sm"
                         variant="outline"
                         className="flex-1 border-primary/30 text-primary hover:bg-primary/10"
+                        onClick={() => window.open(project.githubUrl)}
                       >
                         <Github size={14} className="mr-1" />
                         Code
