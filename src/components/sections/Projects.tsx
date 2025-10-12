@@ -126,6 +126,7 @@ const Projects = () => {
                     <Button
                       size="sm"
                       className="bg-primary hover:bg-primary-glow"
+                      onClick={() => window.open("https://shophub-princesanchela.vercel.app/")}
                     >
                       <ExternalLink size={16} className="mr-2" />
                       Live Demo
