@@ -46,6 +46,7 @@ const Hero = () => {
               }} />
           </div>
         </div>
+
         {/* Mobile Interface */}
         <div className=" relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:hidden" >
           {/* Profile Photo */}
