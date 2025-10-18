@@ -34,14 +34,30 @@ const Hero = () => {
           <HeroR />
           {/* Profile Photo */}
           <div className="relative animate fade-in-20 animate-fade-in transition-opacity delay-300 duration-600 ease-in-out hover:-translate-y-1 hover:scale-110">
-            <img src={ProfileDesktop} alt="profile photo" style={{ height: "34rem", width: "25rem", padding: "1rem" }} />
+            <img src={ProfileDesktop} alt="profile photo"
+              className="rounded-xl border-2 border-transparent relative overflow-hidden" style={{
+                // Apply same gradient as your text style
+                borderImageSlice: 1,
+                borderImageSource: "linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6, #ec4899)",
+                boxShadow:
+                  "0 0 10px rgba(59,130,246,0.6), 0 0 15px rgba(236,72,153,0.4), 0 0 20px rgba(14,165,233,0.4)",
+                animation: `glowMove ${3 + Math.random() * 2}s infinite alternate`,
+                height: "30rem", width: "17rem"
+              }} />
           </div>
         </div>
         {/* Mobile Interface */}
         <div className=" relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:hidden" >
           {/* Profile Photo */}
           <div className=" animate fade-in-20 mt-[3rem]" style={{ padding: "1rem" }} >
-            <img src={ProfileMobile} alt="profile photo" />
+            <img src={ProfileMobile} alt="profile photo" className=" border-[0.75rem] border-transparent relative overflow-hidden" style={{
+              // Apply same gradient as your text style
+              borderImageSlice: 1,
+              borderImageSource: "linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6, #ec4899)",
+              boxShadow:
+                "0 0 10px rgba(59,130,246,0.6), 0 0 15px rgba(236,72,153,0.4), 0 0 20px rgba(14,165,233,0.4)",
+              animation: `glowMove ${3 + Math.random() * 2}s infinite alternate`,
+            }} />
           </div>
           <HeroR />
         </div>
