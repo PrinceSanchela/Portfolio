@@ -8,7 +8,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Preloader from "./components/sections/Preloader";
 import { motion, AnimatePresence } from "framer-motion";
-import Footer from "./components/sections/Footer";
 
 const queryClient = new QueryClient();
 
@@ -38,7 +37,6 @@ const App: React.FC = () => {
                     <Route path="/" element={<Index />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
-                  <Footer />
                 </div>
               </BrowserRouter>
             </motion.div>
