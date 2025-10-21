@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface PreloaderProps {
@@ -6,18 +6,38 @@ interface PreloaderProps {
 }
 
 const typingText = "Prince Sanchela";
-
 const Preloader: React.FC<PreloaderProps> = ({ onFinish }) => {
+
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+
+    const fadeOutAudio = (audio: HTMLAudioElement, duration: number) => {
+        const steps = 20;
+        const stepTime = duration / steps;
+        const stepVolume = audio.volume / steps;
+
+        const interval = setInterval(() => {
+            if (audio.volume - stepVolume > 0) {
+                audio.volume = Math.max(0, audio.volume - stepVolume);
+            } else {
+                audio.volume = 0;
+                audio.pause();
+                audio.currentTime = 0;
+                clearInterval(interval);
+            }
+        }, stepTime);
+    };
+
     const [displayText, setDisplayText] = useState("");
     const [showCursor, setShowCursor] = useState(false);
     const [zoomOut, setZoomOut] = useState(false);
 
     useEffect(() => {
+
         let index = 0;
         const typingSpeed = 100;
         const postTypingDelay = 500;
         const extraDelay = 1000;
-        const fadeOutDuration = 800;
+        const fadeOutDuration = 1000;
 
         const typingInterval = setInterval(() => {
             if (index < typingText.length) {
@@ -34,10 +54,34 @@ const Preloader: React.FC<PreloaderProps> = ({ onFinish }) => {
             typingText.length * typingSpeed + postTypingDelay + extraDelay + fadeOutDuration;
         const finishTimer = setTimeout(() => onFinish(), totalDuration);
 
+        // Play music when user interacts (for autoplay-safe start)
+        const playAudioOnInteraction = () => {
+            const audio = audioRef.current;
+            if (!audio) return;
+            audio.volume = 1;
+            audio.play().catch((err) => console.debug("Autoplay blocked:", err));
+        };
+        window.addEventListener("click", playAudioOnInteraction, { once: true });
+        window.addEventListener("touchstart", playAudioOnInteraction, { once: true });
+
+        // Fade-out audio before preloader finishes
+        const fadeStartTime = totalDuration - fadeOutDuration;
+
+        const fadeStartTimer = setTimeout(() => {
+            const audio = audioRef.current;
+            if (audio) fadeOutAudio(audio, fadeOutDuration);
+        }, fadeStartTime);
+
+
         return () => {
+            window.removeEventListener("click", playAudioOnInteraction);
+            window.removeEventListener("touchstart", playAudioOnInteraction);
+            clearTimeout(fadeStartTimer);
             clearInterval(typingInterval);
             clearTimeout(finishTimer);
         };
+
+
     }, [onFinish]);
     const particleCount = 30;
     const particles = Array.from({ length: particleCount });
@@ -113,6 +157,9 @@ const Preloader: React.FC<PreloaderProps> = ({ onFinish }) => {
                         />
                     )}
                 </motion.h1>
+
+                <audio ref={audioRef} src="/portfolio-preloader.mp3" preload="auto" />
+
             </motion.div>
         </AnimatePresence>
     );
