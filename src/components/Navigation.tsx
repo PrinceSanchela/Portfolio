@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Code, FileText, User, Briefcase, Mail, BookOpen } from "lucide-react";
 import PrinceProgrammerLogo from "@/assets/Prince_programmer_logo.png"
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navigation = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
@@ -12,7 +15,6 @@ const Navigation = () => {
     { id: "about", label: "About", icon: User },
     { id: "skills", label: "Skills", icon: Code },
     { id: "projects", label: "Projects", icon: Briefcase },
-    { id: "experience", label: "Experience", icon: FileText },
     { id: "blog", label: "Blog", icon: BookOpen },
     { id: "contact", label: "Contact", icon: Mail },
   ];
@@ -36,9 +38,16 @@ const Navigation = () => {
   },);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+
+    const section = document.getElementById(sectionId);
+    if (location.pathname !== "/") {
+      // If not on home, navigate to home first
+      navigate("/", { state: { scrollTo: sectionId } });
+    } else {
+      // Already on home, just scroll smoothly
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
     }
     setIsOpen(false);
   };
@@ -62,7 +71,21 @@ const Navigation = () => {
             <div className="ml-10 flex items-baseline space-x-4">
               {navItems.map((item) => {
                 const Icon = item.icon;
-                return (
+                return item.id === "blog" ? (
+                  // ✅ Use Link for Blog
+                  <Link
+                    key={item.id}
+                    to="/blog"
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${activeSection === item.id
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground hover:text-primary hover:bg-muted/50"
+                      }`}
+                  >
+                    <Icon size={16} />
+                    {item.label}
+                  </Link>
+                ) : (
+                  // Regular scroll button for other items
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
@@ -78,6 +101,7 @@ const Navigation = () => {
               })}
             </div>
           </div>
+
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -99,16 +123,30 @@ const Navigation = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-card border-b border-border">
             {navItems.map((item) => {
               const Icon = item.icon;
-              return (
-                <button
+              return item.id === "blog" ? (
+                // ✅ Use Link for Blog
+                <Link
                   key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`w-full text-left px-3 py-2 rounded-md text-base font-medium transition-all duration-200 flex items-center gap-3 ${activeSection === item.id
+                  to="/blog"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${activeSection === item.id
                     ? "text-primary bg-primary/10"
                     : "text-muted-foreground hover:text-primary hover:bg-muted/50"
                     }`}
                 >
-                  <Icon size={18} />
+                  <Icon size={16} />
+                  {item.label}
+                </Link>
+              ) : (
+                // Regular scroll button for other items
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${activeSection === item.id
+                    ? "text-primary bg-primary/10"
+                    : "text-muted-foreground hover:text-primary hover:bg-muted/50"
+                    }`}
+                >
+                  <Icon size={16} />
                   {item.label}
                 </button>
               );

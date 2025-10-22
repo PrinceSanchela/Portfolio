@@ -4,7 +4,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Index from "./pages/Index";
+import Navigation from "./components/Navigation";
+import Footer from "./components/sections/Footer";
 import NotFound from "./pages/NotFound";
 import Preloader from "./components/sections/Preloader";
 import { motion, AnimatePresence } from "framer-motion";
@@ -33,10 +37,14 @@ const App: React.FC = () => {
             >
               <BrowserRouter>
                 <div className="min-h-screen flex flex-col">
+                  <Navigation />
                   <Routes>
                     <Route path="/" element={<Index />} />
+                    <Route path="/blog" element={<Blog />}></Route>
+                    <Route path="/blog/:slug" element={<BlogPost />}></Route>
                     <Route path="*" element={<NotFound />} />
                   </Routes>
+                  <Footer />
                 </div>
               </BrowserRouter>
             </motion.div>
