@@ -39,12 +39,12 @@ const Projects = () => {
       featured: false
     },
     {
-      title: "Real Estate Platform",
+      title: "Estate Hub - Real Estate Platform",
       description: "A property listing platform with advanced search filters, virtual tours, user profiles, and integrated maps for property visualization.",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop",
+      image: "https://estatehub-princesanchela.vercel.app/image.png",
       technologies: ["React", "MongoDB", "Express.js", "Google Maps", "Cloudinary"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://estatehub-princesanchela.vercel.app/",
+      githubUrl: "https://github.com/PrinceSanchela/My-Projects/tree/d21e6e48f063deb35fc37a9a47746cbb1efdcce3/EstateHub",
       featured: false
     },
     {
