@@ -57,12 +57,12 @@ const Projects = () => {
       featured: false
     },
     {
-      title: "Fitness Tracker API",
+      title: "FitFlow - Fitness Tracker API",
       description: "A RESTful API for fitness tracking applications with user management, workout logging, progress tracking, and data analytics.",
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+      image: "https://fitflow-princesanchela.vercel.app/hero-fitness.jpg",
       technologies: ["Python", "FastAPI", "PostgreSQL", "JWT", "Docker"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://fitflow-princesanchela.vercel.app/",
+      githubUrl: "https://github.com/PrinceSanchela/My-Projects/tree/738cf2bef048c81af05065b20ed4090acb73172c/FitFlow",
       featured: false
     }
   ];
