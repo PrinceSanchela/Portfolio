@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ShopHubProject from "../../assets/shop_hub_project.png"
 import TaskFlowProject from "../../assets/taskflow_project.png"
+import EstateHubProject from "../../assets/estate_hub_img.png";
 import { ExternalLink, Github, Code } from "lucide-react";
 
 import RevealOnScroll from "@/components/sections/RevealOnScroll";
@@ -41,7 +42,7 @@ const Projects = () => {
     {
       title: "Estate Hub - Real Estate Platform",
       description: "A property listing platform with advanced search filters, virtual tours, user profiles, and integrated maps for property visualization.",
-      image: "https://estatehub-princesanchela.vercel.app/image.png",
+      image: EstateHubProject,
       technologies: ["React", "MongoDB", "Express.js", "Google Maps", "Cloudinary"],
       liveUrl: "https://estatehub-princesanchela.vercel.app/",
       githubUrl: "https://github.com/PrinceSanchela/My-Projects/tree/d21e6e48f063deb35fc37a9a47746cbb1efdcce3/EstateHub",
