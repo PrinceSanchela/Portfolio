@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import ShopHubProject from "../../assets/shop_hub_project.png"
 import TaskFlowProject from "../../assets/taskflow_project.png"
 import EstateHubProject from "../../assets/estate_hub_img.png";
+import WeatherAIProject from "../../assets/weather_project.jpg"
 import { ExternalLink, Github, Code } from "lucide-react";
 
 import RevealOnScroll from "@/components/sections/RevealOnScroll";
@@ -33,10 +34,9 @@ const Projects = () => {
     {
       title: "Weather Analytics App",
       description: "A weather monitoring application with data visualization, location-based forecasts, and historical weather data analysis using external APIs.",
-      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop",
+      image: WeatherAIProject ,
       technologies: ["React", "Python", "FastAPI", "Chart.js", "OpenWeather API"],
-      liveUrl: "#",
-      githubUrl: "#",
+      liveUrl: "https://weatherai-princesanchela.vercel.app",
       featured: false
     },
     {
@@ -45,7 +45,6 @@ const Projects = () => {
       image: EstateHubProject,
       technologies: ["React", "MongoDB", "Express.js", "Google Maps", "Cloudinary"],
       liveUrl: "https://estatehub-princesanchela.vercel.app/",
-      githubUrl: "https://github.com/PrinceSanchela/My-Projects/tree/d21e6e48f063deb35fc37a9a47746cbb1efdcce3/EstateHub",
       featured: false
     },
     {
@@ -54,7 +53,6 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1486312338219-ce68e2c6f44d?w=600&h=400&fit=crop",
       technologies: ["React", "Python", "MongoDB", "Redis", "TinyMCE"],
       liveUrl: "#",
-      githubUrl: "#",
       featured: false
     },
     {
@@ -63,7 +61,6 @@ const Projects = () => {
       image: "https://fitflow-princesanchela.vercel.app/hero-fitness.jpg",
       technologies: ["Python", "FastAPI", "PostgreSQL", "JWT", "Docker"],
       liveUrl: "https://fitflow-princesanchela.vercel.app/",
-      githubUrl: "https://github.com/PrinceSanchela/My-Projects/tree/738cf2bef048c81af05065b20ed4090acb73172c/FitFlow",
       featured: false
     }
   ];
@@ -191,20 +188,11 @@ const Projects = () => {
                       <Button
                         size="sm"
                         variant="outline"
-                        className="flex-1 border-primary/30 text-primary hover:bg-primary/10"
+                        className="flex-1 border-primary/30 text-primary hover:bg-primary/10 hover:text-white"
                         onClick={() => window.open(project.liveUrl)}
                       >
                         <ExternalLink size={14} className="mr-1" />
                         Demo
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="flex-1 border-primary/30 text-primary hover:bg-primary/10"
-                        onClick={() => window.open(project.githubUrl)}
-                      >
-                        <Github size={14} className="mr-1" />
-                        Code
                       </Button>
                     </div>
                   </CardContent>
