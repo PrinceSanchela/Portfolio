@@ -128,6 +128,7 @@ const Navigation = () => {
                 <Link
                   key={item.id}
                   to="/blog"
+                  onClick={() => setIsOpen(false)}
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-2 ${activeSection === item.id
                     ? "text-primary bg-primary/10"
                     : "text-muted-foreground hover:text-primary hover:bg-muted/50"
