@@ -11,12 +11,7 @@ import emailjs from "emailjs-com";
 import RevealOnScroll from "./RevealOnScroll";
 
 const Contact: React.FC = () => {
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   email: "",
-  //   subject: "",
-  //   message: ""
-  // });
+
   type Errors = {
     name: string;
     email: string;
@@ -93,33 +88,6 @@ const Contact: React.FC = () => {
 
   };
 
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   // Basic validation
-  //   if (!formData.name || !formData.email || !formData.message) {
-  //     toast({
-  //       title: "Validation Error",
-  //       description: "Please fill in all required fields.",
-  //       variant: "destructive"
-  //     });
-  //     return;
-  //   }
-
-  //   // Simulate form submission
-  //   toast({
-  //     title: "Message Sent!",
-  //     description: "Thank you for your message. I'll get back to you soon!",
-  //   });
-
-  //   // Reset form
-  //   setFormData({ name: "", email: "", subject: "", message: "" });
-  // };
-
-  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-  //   const { name, value } = e.target;
-  //   setFormData(prev => ({ ...prev, [name]: value }));
-  // };
   const contactInfo = [
     {
       icon: Mail,
