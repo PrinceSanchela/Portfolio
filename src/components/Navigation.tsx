@@ -9,6 +9,7 @@ const Navigation = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  
 
   const navItems = [
     { id: "home", label: "Home", icon: User },
@@ -37,20 +38,40 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   },);
 
+useEffect(() => {
+    const sectionId = location.state?.scrollTo;
+
+    if (sectionId) {
+      const element = document.getElementById(sectionId);
+
+      setTimeout(() => {
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 350);
+
+      // Optional improvement: clear state after scroll
+      setTimeout(() => {
+        navigate(location.pathname, { replace: true, state: null });
+      }, 600);
+    }
+  }, [location.pathname, location.state, navigate]);
+
   const scrollToSection = (sectionId: string) => {
 
+  if (location.pathname !== "/") {
+    // If not on home page → send scroll target to home
+    navigate("/", { state: { scrollTo: sectionId } });
+  } else {
+    // Already on home → scroll directly
     const section = document.getElementById(sectionId);
-    if (location.pathname !== "/") {
-      // If not on home, navigate to home first
-      navigate("/", { state: { scrollTo: sectionId } });
-    } else {
-      // Already on home, just scroll smoothly
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
     }
-    setIsOpen(false);
-  };
+  }
+
+  setIsOpen(false);
+};
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
